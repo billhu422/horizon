@@ -170,24 +170,24 @@ class RegistrationView(_RequestPassingFormView):
                     LOG.debug('default cloud role not found')
 
                 # TODO(garcianavalon) as setting!
-                region_id = 'Spain2'
-                endpoint_groups = fiware_api.keystone.endpoint_group_list(
-                    request, use_idm_account=True)
-                region_group = next(
-                    group for group in endpoint_groups
-                    if group.filters.get('region_id', None) == region_id
-                )
+#                region_id = 'Spain2'
+#                endpoint_groups = fiware_api.keystone.endpoint_group_list(
+#                    request, use_idm_account=True)
+#                region_group = next(
+#                    group for group in endpoint_groups
+#                    if group.filters.get('region_id', None) == region_id
+#                )
 
-                if not region_group:
-                    messages.error(
-                        request, 'There is no endpoint group defined for that region')
-                    return
+#                if not region_group:
+#                    messages.error(
+#                        request, 'There is no endpoint group defined for that region')
+#                    return
 
-                fiware_api.keystone.add_endpoint_group_to_project(
-                    request,
-                    project=new_user.cloud_project_id,
-                    endpoint_group=region_group,
-                    use_idm_account=True)
+#                fiware_api.keystone.add_endpoint_group_to_project(
+#                    request,
+#                    project=new_user.cloud_project_id,
+#                    endpoint_group=region_group,
+#                    use_idm_account=True)
 
             # Enable Gravatar
             if cleaned_data['use_gravatar']:
